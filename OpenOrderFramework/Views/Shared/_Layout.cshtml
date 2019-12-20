@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Order Framework</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="/Content/card.css">
+</head>
+<body>
+
+    <!--Navbar-->
+    <div class="bs-component">
+        
+        <!-- Additional container -->
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img src="~/Content/images/logo.png" alt="logo" />
+                @Html.ActionLink("     ", "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+
+            <!-- Collapsible content -->
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Area <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Orders", "Index", "Orders")</li>
+                                <li>@Html.ActionLink("Catagorie", "Index", "Catagories")</li>
+                                <li>@Html.ActionLink("Analytics", "Index", "Analytics")</li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Roles Admin</li>
+                                <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
+                                <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                            </ul>
+                        </li>
+                    }
+                    <li>@Html.ActionLink("Story", "Index", "Story")</li>
+                    <li>@Html.ActionLink("Food", "Index", "Items")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">About us <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li class="divider"></li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                @Html.Partial("_LoginPartial")
+
+            </div>
+
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+        <style>
+            body, h1, h2, h3, h4, h5, h6 {
+                font-family: "Karma", sans-serif
+            }
+
+            .w3-bar-block .w3-bar-item {
+                padding: 20px
+            }
+        </style>
+
+        <!-- Footer -->
+        <footer class="w3-row-padding w3-padding-32">
+            <div class="w3-third">
+                <h3>Our Location</h3>
+                <p>Shop 321, G/F Hong Kong</p>
+                <p>Tel: 2987 2222</p>
+
+            </div>
+
+            <div class="w3-third">
+                <h3>BLOG POSTS</h3>
+                <ul class="w3-ul w3-hoverable">
+                    <li class="w3-padding-16">
+                        <img src="/w3images/workshop.jpg" class="w3-left w3-margin-right" style="width:50px">
+                        <span class="w3-large">Lorem</span><br>
+                        <span>Sed mattis nunc</span>
+                    </li>
+                    <li class="w3-padding-16">
+                        <img src="/w3images/gondol.jpg" class="w3-left w3-margin-right" style="width:50px">
+                        <span class="w3-large">Ipsum</span><br>
+                        <span>Praes tinci sed</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="w3-third w3-serif">
+                <h3>POPULAR TAGS</h3>
+                <p>
+                    <span class="w3-tag w3-black w3-margin-bottom">Travel</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Hong Kong</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Dinner</span>
+                    <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Salmon</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">France</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Drinks</span>
+                    <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Ideas</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Flavors</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Cuisine</span>
+                    <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Chicken</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Dressing</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Fried</span>
+                    <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Fish</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Duck</span>
+                </p>
+            </div>
+        </footer>
+        <script>
+            // Script to open and close sidebar
+            function w3_open() {
+                document.getElementById("mySidebar").style.display = "block";
+            }
+
+            function w3_close() {
+                document.getElementById("mySidebar").style.display = "none";
+            }
+        </script>
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Douglas Pub</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
